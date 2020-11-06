@@ -16,7 +16,7 @@ Once you did that, you should see a big popup. Copy the bot ID and token and sav
 
 ![](promo/created.png)
 
-## How do use my bot?
+## How do I use my bot?
 Bots can only be used in groups. In order to add a bot, you should know its ID.\
 Head into the app. Choose or create a group you would like to add the bot into. Open its settings by clicking on its title in the top-left corner. Navigate to the "Invites" tab. Paste your bot ID into the "Bot ID" field. Click the "Invite bot" button. You're all set!
 
