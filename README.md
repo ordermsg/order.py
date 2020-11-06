@@ -3,9 +3,27 @@
 
 This repository contains the source code of the Order API wrapper for the Python programming language meant for writing bots. It could be used for typical user accounts as well, and this is not prohibited by the Terms of Service in any way, but not all functions of the API are fully implemented to fulfill every action a human user might take in the app.
 
-**Simple bot example** - sends "Hi!" when it receives "hello"
+## How do I get a bot token?
+Head into the app. Open user settings by clicking on you avatar in the bottom-right corner. Navigate to the "Developers" tab
 
-![](promo.png)
+![](promo/settings.png)
+
+Choose a cool name and hit the "create" button. Below that you will see the list of bot IDs you have created previously.
+
+![](promo/creation.png)
+
+Once you did that, you should see a big popup. Copy the bot ID and token and save them in a separate file. **You will only see this token once!**
+
+![](promo/created.png)
+
+## How do use my bot?
+Bots can only be used in groups. In order to add a bot, you should know its ID.\
+Head into the app. Choose or create a group you would like to add the bot into. Open its settings by clicking on its title in the top-left corner. Navigate to the "Invites" tab. Paste your bot ID into the "Bot ID" field. Click the "Invite bot" button. You're all set!
+
+## Simple bot example
+Sends "Hi!" when it receives "hello"
+
+![](promo/promo.png)
 ```py
 import order
 from order import entities
