@@ -3,6 +3,9 @@
 
 This repository contains the source code of the Order API wrapper for the Python programming language meant for writing bots. It could be used for typical user accounts as well, and this is not prohibited by the Terms of Service in any way, but not all functions of the API are fully implemented to fulfill every action a human user might take in the app.
 
+## Installation
+`pip3 install order.py`
+
 ## How do I get a bot token?
 Head into the app. Open user settings by clicking on you avatar in the bottom-right corner. Navigate to the "Developers" tab
 
