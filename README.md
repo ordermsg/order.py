@@ -4,6 +4,8 @@
 This repository contains the source code of the Order API wrapper for the Python programming language meant for writing bots. It could be used for typical user accounts as well, and this is not prohibited by the Terms of Service in any way, but not all functions of the API are fully implemented to fulfill every action a human user might take in the app.
 
 **Simple bot example** - sends "Hi!" when in receives "hello"
+
+![](promo.png)
 ```py
 import order
 from order import entities
