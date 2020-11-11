@@ -7,7 +7,7 @@ with open('README.md', 'r') as d:
 setup(
     name = 'order.py',
     packages = ['order'],
-    version = '0.0.3',
+    version = '0.0.4',
     license='MIT',
     description = 'Official Order Python API wrapper',
     author = 'portasynthinca3',

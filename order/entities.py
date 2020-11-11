@@ -125,8 +125,64 @@ class User(Entity):
     def __init__(self):
         super().__init__(Entity.Type.USER)
 
+    @staticmethod
+    def create(**kwargs):
+        obj = User()
+        for k, v in kwargs.items():
+            setattr(obj, k, v)
+        return obj
+
     def _detail(self) -> str:
         return f'ID {str(self.id)}, NAME "{self.name}"'
+
+class Channel(Entity):
+    FIELDS = [
+        IntField('id', 8),
+        StrField('name'),
+        IntListField('members', 8),
+        IntField('group', 8),
+        IntListField('messages', 8),
+        IntListField('typing', 8),
+        BoolField('rules')
+    ]
+
+    def __init__(self):
+        super().__init__(Entity.Type.CHANNEL)
+
+    @staticmethod
+    def create(**kwargs):
+        obj = Channel()
+        for k, v in kwargs.items():
+            setattr(obj, k, v)
+        return obj
+
+    def _detail(self) -> str:
+        return f'ID {str(self.id)}, NAME "{self.name}", IN {str(self.group)}'
+
+class Group(Entity):
+    FIELDS = [
+        IntField('id', 8),
+        StrField('name'),
+        IntListField('channels', 8),
+        IntField('owner', 8),
+        IntListField('roles', 8),
+        IntField('icon', 8),
+        None,                          # TODO: StrListField
+        IntField('everyone_role', 8)
+    ]
+
+    def __init__(self):
+        super().__init__(Entity.Type.GROUP)
+
+    @staticmethod
+    def create(**kwargs):
+        obj = Channel()
+        for k, v in kwargs.items():
+            setattr(obj, k, v)
+        return obj
+
+    def _detail(self) -> str:
+        return f'ID {str(self.id)}, NAME "{self.name}", OWNER {str(self.owner)}'
 
 class Message(Entity):
     FIELDS = [
@@ -149,7 +205,7 @@ class Message(Entity):
         return e
 
     def _detail(self) -> str:
-        return f'ID {str(self.id)}, SECTION CNT {str(len(self.sections))}'
+        return f'ID {str(self.id)}, SECTION CNT {str(len(self.sections))}, IN {str(self.channel)}'
 
     class Section:
         class Type(Enum):
@@ -193,6 +249,32 @@ class Message(Entity):
         def create(text: str, reply_to: int):
             return Message.Section(Message.Section.Type.QUOTE, reply_to, text)
 
+class Role(Entity):
+    FIELDS = [
+        IntField('id', 8),
+        StrField('name'),
+        IntField('color', 4),
+        IntField('group', 8),
+        IntField('priority', 2),
+        IntField('permissions', 6),
+        IntListField('members', 8)
+    ]
+
+    def __init__(self):
+        super().__init__(Entity.Type.GROUP)
+
+    @staticmethod
+    def create(**kwargs):
+        obj = Channel()
+        for k, v in kwargs.items():
+            setattr(obj, k, v)
+        return obj
+
+    def _detail(self) -> str:
+        return f'ID {str(self.id)}, NAME "{self.name}", GROUP {str(self.group)}'
+
+
+
 class EntityGetRequest:
     class Pagination:
         def __init__(self, field: int, direction: bool, id: int, count: int):
@@ -234,8 +316,8 @@ class EntityGetRequest:
 
 _ENTITY_CONSTRUCTORS = [None,
     User,
-    None, # Channel, # TODO
-    None, # Group,   # TODO
+    Channel,
+    Group,
     Message,
-    None  # Role     # TODO
+    Role
 ]
