@@ -4,3 +4,4 @@ test.py
 dist/
 MANIFEST
 order.py.egg-info/
+upload.sh

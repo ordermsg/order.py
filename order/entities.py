@@ -40,7 +40,7 @@ class Entity:
         fields = _ENTITY_CONSTRUCTORS[self.tp.value].FIELDS
         for i in range(len(fields)):
             f = fields[i]
-            if hasattr(self, f.attr):
+            if f is not None and hasattr(self, f.attr):
                 data += types.encode_int(i, 2)
                 data += f.encode(getattr(self, f.attr))
                 cnt  += 1
